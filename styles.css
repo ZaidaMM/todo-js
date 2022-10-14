@@ -22,11 +22,15 @@ h1 {
 h3 {
   margin-top: 20px;
   margin-bottom: 15px;
+  letter-spacing: 1px;
+  font-size: 26px;
+  font-weight: lighter;
 }
 
 label {
   letter-spacing: 1px;
   font-size: 26px;
+  font-weight: lighter;
 }
 
 input {
@@ -43,12 +47,18 @@ li {
 
 hr {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .btn {
   padding: 5px 8px;
   border-radius: 6px;
   border-style: none;
+  cursor: pointer;
+}
+
+btn:hover {
+  font-size: small;
 }
 
 .btn-add {
@@ -58,9 +68,10 @@ hr {
 
 .btn-clear {
   color: teal;
+  border: 2px solid teal;
+  border-radius: 5px;
   font-size: smaller;
-  padding-left: 0;
-  padding-top: 50px;
+  padding: 6px 8px;
   cursor: pointer;
 }
 
@@ -93,7 +104,8 @@ hr {
 
 .todo-edit-btn:hover,
 .todo-delete-btn:hover {
-  padding: 5px 6px;
+  padding: 3px 4px;
+  font-size: small;
 }
 
 section {
@@ -130,11 +142,10 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
   background-color: azure;
   color: #282c34;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 5px;
   border-radius: 5px;
 }

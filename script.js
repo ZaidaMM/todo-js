@@ -3,6 +3,7 @@ const todoInput = document.getElementById('todoInput');
 const submitButton = document.getElementById('submitTodoButton');
 const todoList = document.getElementById('todoList');
 const clearTodos = document.getElementById('clearTodoButton');
+const listTitle = document.getElementById('listTitle');
 const totalStats = document.querySelector('.total-stats-span');
 const completedStats = document.querySelector('.completed-stats-span');
 const remainingStats = document.querySelector('.remaining-stats-span');
@@ -16,12 +17,17 @@ todoForm.addEventListener('submit', addTodo);
 
 todoList.addEventListener('click', removeTodo);
 
+clearTodos.addEventListener('click', clearTodosList);
+
 // Get todos
 function getTodos() {
   if (localStorage.getItem('todos') === null) {
     todos = [];
   } else {
     todos = JSON.parse(localStorage.getItem('todos'));
+    // Add clear button and list title
+    showClearButton();
+    showListTitle();
   }
 
   todos.forEach((todo) => {
@@ -71,8 +77,11 @@ function getTodos() {
     todoList.appendChild(todoItem);
 
     // Count stats
-    console.log(todos.length);
     countStats();
+
+    // Add clear button and list title
+    showClearButton();
+    showListTitle();
   });
 }
 
@@ -138,6 +147,10 @@ function addTodo(event) {
   // Add stats
   console.log(todos.length);
   countStats();
+
+  // Add clear button and list title
+  showClearButton();
+  showListTitle();
 }
 
 // Add in LS
@@ -157,6 +170,8 @@ function addTodoToLocalStorage(todo) {
   countStats();
 }
 
+// Edit todo
+
 // Remove todo
 function removeTodo(e) {
   console.log(e.target);
@@ -168,6 +183,10 @@ function removeTodo(e) {
 
     // Add stats
     countStats();
+
+    // Remove clear button and list title when no todos
+    showClearButton();
+    showListTitle();
   }
 }
 
@@ -185,13 +204,55 @@ function removeTodoFromLocalStorage(todo) {
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+// Clear todos
+function clearTodosList(e) {
+  while (todoList.firstChild) {
+    todoList.removeChild(todoList.firstChild);
+    console.log(todoList.firstChild);
+  }
+  clearTodosFromLocalStorage();
+
+  // Add stats
+  countStats();
+
+  // Add clear button and list title
+  showClearButton();
+  showListTitle();
+
+  e.preventDefault();
+}
+
+// Clear todos from LS
+function clearTodosFromLocalStorage() {
+  localStorage.clear();
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
 // Stats count
 function countStats() {
   const todosLength = JSON.parse(localStorage.getItem('todos')).length;
   totalStats.textContent = todosLength;
 
-  //  completedStats
-
   remainingStats.textContent = todosLength - completedStats.textContent;
-  console.log(todos.length);
+
+  //  completedStats
+}
+
+// Show/hide clear button
+function showClearButton() {
+  if (JSON.parse(localStorage.getItem('todos')).length === 0) {
+    clearTodos.classList.add('hidden');
+  } else {
+    clearTodos.classList.remove('hidden');
+  }
+}
+// Show/hide list title
+function showListTitle() {
+  if (JSON.parse(localStorage.getItem('todos')).length === 0) {
+    listTitle.classList.add('hidden');
+    console.log('hide');
+  } else {
+    listTitle.classList.remove('hidden');
+    console.log('show');
+  }
 }
