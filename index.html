@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Todo JS</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>TO DO LIST</h1>
+      </header>
+      <section class="todos">
+        <form name="todoForm" id="todoForm" class="todo-form">
+          <label for="todoInput">Add new todo</label>
+          <input
+            type="text"
+            id="todoInput"
+            name="todoInput"
+            class="todo-input"
+            placeholder="e.g. Study"
+            value=""
+          />
+          <button
+            id="submitTodoButton"
+            name="submitButton"
+            class="btn btn-add"
+            type="submit"
+          >
+            Add Todo
+          </button>
+        </form>
+        <hr />
+        <div class="todos-stats">
+          <div class="total-tasks">
+            Total tasks: <span class="total-stats-span">0</span>
+          </div>
+          <div class="completed-tasks">
+            Completed: <span class="completed-stats-span">0</span>
+          </div>
+          <div class="remaining-tasks">
+            Remaining: <span class="remaining-stats-span">0</span>
+          </div>
+        </div>
+        <ul class="todo-list" id="todoList"></ul>
+        <a id="clearTodoButton" name="clearTodoButton" class="btn-clear hidden">
+          Clear Todos
+        </a>
+      </section>
+    </div>
+    <script src="./newScript.js"></script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  font-size: 50px;
+}
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+label {
+  letter-spacing: 1px;
+  font-size: 26px;
+}
+
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+hr {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border-style: none;
+}
+
+.btn-add {
+  background-color: teal;
+  color: azure;
+}
+
+.btn-clear {
+  color: teal;
+  font-size: smaller;
+  padding-left: 0;
+  padding-top: 50px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-clear:hover {
+  font-size: small;
+}
+
+.todo-check-btn {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  border: 2px solid #282c34;
+}
+
+.todo-edit-btn,
+.todo-delete-btn {
+  padding: 4px 5px;
+  border-radius: 6px;
+  border-style: none;
+  background-color: teal;
+  color: azure;
+  font-size: smaller;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.todo-edit-btn:hover,
+.todo-delete-btn:hover {
+  padding: 5px 6px;
+}
+
+section {
+  border: 2px solid azure;
+  border-radius: 6px;
+  padding: 30px;
+  min-width: 400px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  color: azure;
+  border: 2px solid azure;
+}
+
+/* TODOS FORM */
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.todo-input {
+  display: flex;
+}
+
+/* TODOS DISPLAY */
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  background-color: azure;
+  color: #282c34;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* .todo-header {
+  display: flex;
+  align-items: center;
+} */
+
+/* TODOS STATS */
+.todos-stats {
+  font-size: smaller;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.stats-span {
+  /* color: teal; */
+  font-size: larger;
+  font-weight: bolder;
+}
