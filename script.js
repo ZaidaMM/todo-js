@@ -2,6 +2,7 @@ const todoForm = document.getElementById('todoForm');
 const todoInput = document.getElementById('todoInput');
 const submitButton = document.getElementById('submitTodoButton');
 const todoList = document.getElementById('todoList');
+const todoInputLabel = document.getElementById('todoInputLabel');
 const clearTodos = document.getElementById('clearTodoButton');
 const listTitle = document.getElementById('listTitle');
 const totalStats = document.querySelector('.total-stats-span');
@@ -145,7 +146,7 @@ function addTodo(event) {
   event.preventDefault();
 
   // Add stats
-  console.log(todos.length);
+  // console.log(todos.length);
   countStats();
 
   // Add clear button and list title
@@ -174,12 +175,12 @@ function addTodoToLocalStorage(todo) {
 
 // Remove todo
 function removeTodo(e) {
-  console.log(e.target);
   if (e.target.classList.contains('todo-delete-btn')) {
-    e.target.parentElement.parentElement.remove();
+    let parentEl = e.target.parentElement.parentElement;
+    parentEl.remove();
 
     // Remove from LS
-    removeTodoFromLocalStorage(e.target.parentElement.parentElement);
+    removeTodoFromLocalStorage(parentEl);
 
     // Add stats
     countStats();
@@ -193,14 +194,11 @@ function removeTodo(e) {
 // Remove from LS
 function removeTodoFromLocalStorage(todo) {
   let todos;
-  if (localStorage.getItem('todos') === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem('todos'));
-  }
+  todos = JSON.parse(localStorage.getItem('todos'));
 
   const todoElement = todo.children[0];
   todos.splice(todos.indexOf(todoElement), 1);
+  console.log(todos);
   localStorage.setItem('todos', JSON.stringify(todos));
 }
 
@@ -250,9 +248,9 @@ function showClearButton() {
 function showListTitle() {
   if (JSON.parse(localStorage.getItem('todos')).length === 0) {
     listTitle.classList.add('hidden');
-    console.log('hide');
+    // console.log('hide');
   } else {
     listTitle.classList.remove('hidden');
-    console.log('show');
+    // console.log('show');
   }
 }
