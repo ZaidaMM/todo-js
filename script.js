@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', getTodos);
 
 todoForm.addEventListener('submit', addTodo);
 
+todoList.addEventListener('click', editTodo);
+
 todoList.addEventListener('click', removeTodo);
 
 clearTodos.addEventListener('click', clearTodosList);
@@ -119,6 +121,9 @@ function addTodo(event) {
   // Add class
   todoEditBtn.classList.add('todo-edit-btn');
 
+  // Add Event listener
+  // todoEditBtn.addEventListener('click', editTodo);
+
   // Append to div
   todoBtns.appendChild(todoEditBtn);
 
@@ -156,7 +161,12 @@ function addTodo(event) {
 
 // Add in LS
 function addTodoToLocalStorage(todo) {
-  let todos;
+  // event.preventDefault();
+  let todos = [];
+  // let todo = {
+  //   id: Date.now(),
+  //   name: todoInput.value,
+  // };
   if (localStorage.getItem('todos') === null) {
     todos = [];
   } else {
@@ -172,6 +182,21 @@ function addTodoToLocalStorage(todo) {
 }
 
 // Edit todo
+function editTodo(e) {
+  const currentTodo = e.target.parentElement.parentElement.firstChild;
+
+  if (e.target.classList.contains('todo-edit-btn')) {
+    // Set input value to selected todo
+    todoInput.value = currentTodo.textContent;
+
+    // Change label and button to edit
+    document.getElementById('todoInputLabel').innerText = 'Edit todo';
+    document.getElementById('submitTodoButton').innerText = 'Edit';
+
+    // Clear input field
+    // todoInput.value = '';
+  }
+}
 
 // Remove todo
 function removeTodo(e) {
