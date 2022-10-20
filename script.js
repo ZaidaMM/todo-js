@@ -9,7 +9,7 @@ const totalStats = document.querySelector('.total-stats-span');
 const completedStats = document.querySelector('.completed-stats-span');
 const remainingStats = document.querySelector('.remaining-stats-span');
 
-let todos = JSON.parse(localStorage.getItem('todos'));
+// let todos = JSON.parse(localStorage.getItem('todos'));
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos);
@@ -24,6 +24,7 @@ clearTodos.addEventListener('click', clearTodosList);
 
 // Get todos
 function getTodos() {
+  let todos;
   if (localStorage.getItem('todos') === null) {
     todos = [];
   } else {
@@ -163,10 +164,7 @@ function addTodo(event) {
 function addTodoToLocalStorage(todo) {
   // event.preventDefault();
   let todos = [];
-  // let todo = {
-  //   id: Date.now(),
-  //   name: todoInput.value,
-  // };
+
   if (localStorage.getItem('todos') === null) {
     todos = [];
   } else {
@@ -203,9 +201,28 @@ function removeTodo(e) {
   if (e.target.classList.contains('todo-delete-btn')) {
     let parentEl = e.target.parentElement.parentElement;
     parentEl.remove();
+    // console.log(parentEl);
 
     // Remove from LS
+    function removeTodoFromLocalStorage(todo) {
+      let todos;
+      todos = JSON.parse(localStorage.getItem('todos'));
+
+      if (e.target.classList.contains('todo-delete-btn')) {
+        let parentEl = e.target.parentElement.parentElement;
+
+        const todoElement = todos[0];
+        // console.log(todos[0]);
+
+        todos.splice(todos.indexOf(todoElement), 1);
+        // console.log(todos);
+
+        localStorage.setItem('todos', JSON.stringify(todos));
+      }
+    }
+
     removeTodoFromLocalStorage(parentEl);
+    console.log(parentEl);
 
     // Add stats
     countStats();
@@ -214,17 +231,6 @@ function removeTodo(e) {
     showClearButton();
     showListTitle();
   }
-}
-
-// Remove from LS
-function removeTodoFromLocalStorage(todo) {
-  let todos;
-  todos = JSON.parse(localStorage.getItem('todos'));
-
-  const todoElement = todo.children[0];
-  todos.splice(todos.indexOf(todoElement), 1);
-  console.log(todos);
-  localStorage.setItem('todos', JSON.stringify(todos));
 }
 
 // Clear todos
@@ -248,7 +254,7 @@ function clearTodosList(e) {
 // Clear todos from LS
 function clearTodosFromLocalStorage() {
   localStorage.clear();
-  localStorage.setItem('todos', JSON.stringify(todos));
+  // localStorage.setItem('todos', JSON.stringify(todos));
 }
 
 // Stats count
